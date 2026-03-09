@@ -4,7 +4,7 @@ import joblib
 import cv2
 import numpy as np
 import os
-import urllib.request
+import gdown
 
 from skimage.feature import local_binary_pattern, hog
 from scipy.fftpack import dct
@@ -29,11 +29,11 @@ LBP_RADIUS = 3
 
 MODEL_PATH = "best_model.joblib"
 
-MODEL_URL = "https://drive.google.com/uc?export=download&id=1_f1jr7uQPkcKTBt_4dVF_xLMlNSlfZem"
+MODEL_URL = "https://drive.google.com/uc?id=1_f1jr7uQPkcKTBt_4dVF_xLMlNSlfZem"
 
 if not os.path.exists(MODEL_PATH):
     print("Downloading model...")
-    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
 bundle = joblib.load(MODEL_PATH)
 model = bundle["model"]
@@ -119,4 +119,5 @@ async def predict(file: UploadFile):
     }
 
 # Run with: uvicorn backend:app --reload
+
 
