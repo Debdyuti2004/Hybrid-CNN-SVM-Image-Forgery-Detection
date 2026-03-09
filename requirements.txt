@@ -11,3 +11,4 @@ matplotlib
 seaborn
 pillow
 gdown
+python-multipart
