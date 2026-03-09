@@ -12,3 +12,4 @@ seaborn
 pillow
 gdown
 python-multipart
+jinja2
