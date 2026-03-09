@@ -4,6 +4,7 @@ import joblib
 import cv2
 import numpy as np
 import os
+import urllib.request
 
 from skimage.feature import local_binary_pattern, hog
 from scipy.fftpack import dct
@@ -26,12 +27,13 @@ IMG_SIZE = 96
 LBP_POINTS = 24
 LBP_RADIUS = 3
 
-MODEL_PATH = "models/best_model.joblib"
+MODEL_PATH = "best_model.joblib"
 
-# ── LOAD MODEL ─────────────────────────────────────────
+MODEL_URL = "https://drive.google.com/file/d/1_f1jr7uQPkcKTBt_4dVF_xLMlNSlfZem/view?usp=sharing"
 
 if not os.path.exists(MODEL_PATH):
-    raise RuntimeError("No trained model found.")
+    print("Downloading model...")
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
 
 bundle = joblib.load(MODEL_PATH)
 model = bundle["model"]
@@ -115,4 +117,5 @@ async def predict(file: UploadFile):
         "confidence": float(max(prob)),
         "probabilities": dict(zip(le.classes_, prob.tolist()))
     }
+
 # Run with: uvicorn backend:app --reload
