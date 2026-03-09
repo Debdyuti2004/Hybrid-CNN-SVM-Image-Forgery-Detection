@@ -10,3 +10,4 @@ scipy
 matplotlib
 seaborn
 pillow
+gdown
