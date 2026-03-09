@@ -29,7 +29,7 @@ LBP_RADIUS = 3
 
 MODEL_PATH = "best_model.joblib"
 
-MODEL_URL = "https://drive.google.com/file/d/1_f1jr7uQPkcKTBt_4dVF_xLMlNSlfZem/view?usp=sharing"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1_f1jr7uQPkcKTBt_4dVF_xLMlNSlfZem"
 
 if not os.path.exists(MODEL_PATH):
     print("Downloading model...")
@@ -119,3 +119,4 @@ async def predict(file: UploadFile):
     }
 
 # Run with: uvicorn backend:app --reload
+
