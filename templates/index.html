@@ -811,7 +811,7 @@ async function runAnalysis() {
     try {
       const form = new FormData();
       form.append('file', item.file);
-      const res  = await fetch('http://127.0.0.1:8000/predict', { method: 'POST', body: form });
+      const res  = await fetch('/predict', { method: 'POST', body: form });
       const data = await res.json();
       data.id      = item.id;
       data.preview = item.preview;
